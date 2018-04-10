@@ -7,9 +7,10 @@ Created on Mon Apr  9 15:02:46 2018
 from scipy.special import jv, jvp
 from scipy.special import hankel1 as h1v, h1vp # Bessel, Hankel, and derivs.
 # from scipy.special import hankel2 as h2v, h2vp
-__all__ = ['a_i', 'b_i']
+__all__ = ['te_moment', 'tm_moment']
 
-def a_i(n, x, order):
+
+def te_moment(n, x, order):
     """
     n: Complex refractive index. Array or scalar.
     x: Scalar. Size parameter of cylinder.
@@ -24,7 +25,7 @@ def a_i(n, x, order):
     # print(numer, denom)
     return numer/denom
 
-def b_i(n, x, order):
+def tm_moment(n, x, order):
     """
     n: Complex refractive index. Array or scalar.
     x: Scalar. Size parameter of cylinder.
