@@ -30,7 +30,10 @@ def scatter_q_te(n, x, n_moments):
 
 def extinct_q_tm(n, x, n_moments):
     extinction_q = np.zeros_like(x)
+
+    zeroth_order_term = te_moment(n, x, 0)
+
     for i in range(1, n_moments + 1):
-        extinction_q += tm_moment(n, x, i).real
-    extinction_q = 2/x * 2*extinction_q
+        extinction_q += te_moment(n, x, i).real
+    extinction_q = 2/x * np.real(zeroth_order_term + 2*extinction_q)
     return extinction_q

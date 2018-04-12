@@ -1,4 +1,5 @@
-wl	n	k
+# wl	n	k
+# From https://refractiveindex.info/?shelf=main&book=GaAs&page=Rakic
 2.07E-01	1.08E+00	2.59E+00
 2.08E-01	1.08E+00	2.62E+00
 2.09E-01	1.09E+00	2.64E+00
