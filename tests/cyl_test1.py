@@ -11,7 +11,7 @@ import numpy as np
 from core import *
 import matplotlib.pyplot as plt
 
-wv = np.linspace(0.49, 0.71, 100)
+wv = np.linspace(0.49, 0.71, 1000)
 
 
 nmodes = 20

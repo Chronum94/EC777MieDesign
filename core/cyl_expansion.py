@@ -23,10 +23,9 @@ def te_moment(n, x, order):
     nx = n*x
     numer = n * jv(order, nx) * jvp(order, x) - jvp(order, nx) * jv(order, x)
     denom = n * jv(order, nx) * h1vp(order, x) - jvp(order, nx) * h1v(order, x)
-    # print(numer, denom)
-    if np.any(numer == np.nan+np.nan*1j):
-        raise ZeroDivisionError
-    return numer/denom
+
+    with np.errstate(divide='ignore', invalid='ignore'):
+        return numer/denom
 
 def tm_moment(n, x, order):
     """
@@ -41,5 +40,6 @@ def tm_moment(n, x, order):
     nx = n*x
     numer = jv(order, nx) * jvp(order, x) - n * jvp(order, nx) * jv(order, x)
     denom = jv(order, nx) * h1vp(order, x) - n * jvp(order, nx) * h1v(order, x)
-    # print('N: ', numer, 'D: ', denom)
-    return numer/denom
+
+    with np.errstate(divide='ignore', invalid='ignore'):
+        return numer/denom
