@@ -20,15 +20,15 @@ def te_moment(n, x, order):
     # If refractive_index is a scalar, it will be the same for all wavelengths
     # If an array, must have same length as wavelength array.
     nx = n*x
-    numer = n * jv(nx, order) * jvp(x, order) - jvp(nx, order) * jv(x, order)
-    denom = n * jv(nx, order) * h1vp(x, order) - jvp(nx, order) * h1v(x, order)
+    numer = n * jv(order, nx) * jvp(order, x) - jvp(order, nx) * jv(order, x)
+    denom = n * jv(order, nx) * h1vp(order, x) - jvp(order, nx) * h1v(order, x)
     # print(numer, denom)
     return numer/denom
 
 def tm_moment(n, x, order):
     """
     n: Complex refractive index. Array or scalar.
-    x: Scalar. Size parameter of cylinder.
+    x: Real size parameter of cylinder. Array or scalar.
     order: The order of the moment to return.
     """
     # Calculating moment value for all wavelengths.
@@ -36,7 +36,7 @@ def tm_moment(n, x, order):
     # If an array, must have same length as wavelength array.
 
     nx = n*x
-    numer = jv(nx, order) * jvp(x, order) - n * jvp(nx, order) * jv(x, order)
-    denom = jv(nx, order) * h1vp(x, order) - n * jvp(nx, order) * h1v(x, order)
-    # print(numer, denom)
+    numer = jv(order, nx) * jvp(order, x) - n * jvp(order, nx) * jv(order, x)
+    denom = jv(order, nx) * h1vp(order, x) - n * jvp(order, nx) * h1v(order, x)
+    # print('N: ', numer, 'D: ', denom)
     return numer/denom
