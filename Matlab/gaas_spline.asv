@@ -1,0 +1,5 @@
+function [nspline] = gaas_spline(wavelengths)
+    [wv, n, k] = importdata('Materials/GaAs.txt', ', 2);
+    n = n + k;
+    nspline = wv;
+end

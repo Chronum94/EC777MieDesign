@@ -11,5 +11,5 @@ x = 2*np.pi/wv * d/2
 
 n = 3.5
 
-sctm_1 = scatter_q_tm(n, x, 10)
+sctm_1 = scatter_q_te(n, x, 10)
 plt.plot(wv, sctm_1)
