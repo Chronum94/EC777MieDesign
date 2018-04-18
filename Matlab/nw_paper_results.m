@@ -3,6 +3,7 @@
 % "A precise optical determination of nanoscale diameters of semiconductor nanowires."
 % Nanotechnology 22.38 (2011): 385201.
 
+% Runtime: ~2 seconds on Ryzen 5 1600.
 wv = linspace(0.49, 0.71, 1000);
 
 nmodes = 20;
@@ -18,7 +19,7 @@ for d=diams
     scqtm = scatter_q_tm(gaasnk, x, nmodes);
     subplot(230+plotnum);
     plot(wv, scqtm);
-    ylabel('$Q_{sca}$', 'Interpreter', 'latex');
+    ylabel('$Q_{sca}$ for TM', 'Interpreter', 'latex');
     xlabel('Wavelength[$\mu m$]', 'Interpreter', 'latex');
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
@@ -35,7 +36,7 @@ for d=diams
     scqte = scatter_q_te(gaasnk, x, nmodes);
     subplot(230+plotnum);
     plot(wv, scqte);
-    ylabel('$Q_{sca}$', 'Interpreter', 'latex');
+    ylabel('$Q_{sca}$ for TE', 'Interpreter', 'latex');
     xlabel('Wavelength[$\mu m$]', 'Interpreter', 'latex');
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
@@ -54,7 +55,7 @@ for d=diams
     scq = 0.5 * (scqte + scqtm);
     subplot(230+plotnum);
     plot(wv, scq);
-    ylabel('$Q_{sca}$', 'Interpreter', 'latex');
+    ylabel('$Q_{sca}$ for TE+TM', 'Interpreter', 'latex');
     xlabel('Wavelength[$\mu m$]', 'Interpreter', 'latex');
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
