@@ -105,6 +105,7 @@ for d=diams
     plotnum = plotnum + 1;
 end
 
+% Since multiplot figures have no suptitle with the bioinformatics toolbox.
 fprintf('Figure 1: TE/TM scattering cross sections for GaAs nanowires with varying diameters.\n');
 fprintf('Figure 2: TE/TM absorption cross sections for GaAs nanowires with varying diameters.\n');
 fprintf('Figure 3: TE/TM scattering cross sections for constant refractive index nanowires of diameter = 200 nm.\n');

@@ -85,7 +85,9 @@ for d=diams
     %ylim([-1, 7]);
     plotnum = plotnum + 1;
 end
+
+% Since multiplot figures have no suptitle with the bioinformatics toolbox.
 fprintf('Figure 1: TE/TM scattering cross sections for Ag nanowires with varying diameters.\n');
 fprintf('Figure 2: TE/TM absorption cross sections for Ag nanowires with varying diameters.\n');
-fprintf('Figure 4: TE/TM scattering cross sections for Au nanowires with varying diameters.\n');
-fprintf('Figure 5: TE/TM absorption cross sections for Au nanowires with varying diameters.\n');
+fprintf('Figure 3: TE/TM scattering cross sections for Au nanowires with varying diameters.\n');
+fprintf('Figure 4: TE/TM absorption cross sections for Au nanowires with varying diameters.\n');

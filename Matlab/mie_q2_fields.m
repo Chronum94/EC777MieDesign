@@ -3,7 +3,7 @@ clearvars;close all;
 npoints = 100;
 d = 0.7; % 700 nm diameter cyl.
 nmodes = 25; % Small number of modes. High scattering is typically dominated by a dipole resonance.
-res = 100; % Resolution of field images.
+res = 200; % Resolution of field images.
 slen = 10; % Side length of field images.
 imglims = [-slen/2, slen/2];
 wv = linspace(0.4, 1.4, npoints); % Wavelengths.
@@ -136,4 +136,4 @@ imagesc(imglims, imglims, imag(Hphi));
 title('Imag Hphi');
 colorbar;
 
-fprintf('Figure 1: EM fields for Au scattering at wavelength = %0.3f microns.\n', wv(scatter_max_index));
+fprintf('Figure 2: EM fields for Au scattering at wavelength = %0.3f microns.\n', wv(scatter_max_index));
