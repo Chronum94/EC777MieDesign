@@ -1,20 +1,21 @@
 clearvars; close all;
 
-npoints = 100;
+npoints = 500;
 wv = linspace(0.4, 1.4, npoints);
-nmodes = 20;
+nmodes = 20; % Typically enough
 
 %% GaAs section
-gaasnk= gaas_spline(wv);
-diams = linspace(0.01, 0.5, 6);
+gaasnk= gaas_spline(wv); % GaAs n, k values at wavelengths.
+diams = linspace(0.01, 0.5, 6); %Diameter of nanowires.
 
+% Only commenting the first plot loop. All others are identical.
 figure(1)
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 1]);
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 1]); % Large fig
 plotnum = 1;
 for d=diams
-    x = 2*pi./wv * d/2;
-    scqtm_gaas = scatter_q_tm(gaasnk, x, nmodes);
-    scqte_gaas = scatter_q_te(gaasnk, x, nmodes);
+    x = 2*pi./wv * d/2; % Size parameter.
+    scqtm_gaas = scatter_q_tm(gaasnk, x, nmodes); % TM scattering Q.
+    scqte_gaas = scatter_q_te(gaasnk, x, nmodes); % TE scattering Q.
     subplot(230+plotnum);
     plot(wv, scqtm_gaas, wv ,scqte_gaas);
     ylabel('$Q_{sca}$', 'Interpreter', 'latex');
@@ -22,7 +23,6 @@ for d=diams
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
     legend('TM', 'TE');
-    %ylim([-1, 7]);
     plotnum = plotnum + 1;
 end
 
@@ -42,7 +42,6 @@ for d=diams
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
     legend('TM', 'TE');
-    %ylim([-1, 7]);
     plotnum = plotnum + 1;
 end
 
@@ -51,8 +50,8 @@ end
 figure(3)
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 1]);
 plotnum = 1;
-d = 0.2;
-rixes = linspace(1.5, 3.5, 6);
+d = 0.2;  % Looking at 200 nm diameter nanowire.
+rixes = linspace(1.5, 3.5, 6); % n for plotting. Assuming no losses.
 for n=rixes
     x = 2*pi./wv * d/2;
     scqtm_n = scatter_q_tm(n, x, nmodes);
@@ -64,12 +63,11 @@ for n=rixes
     rawtitle = sprintf('Refractive index of NW: %0.2f', n);
     title(rawtitle, 'Interpreter', 'latex');
     legend('TM', 'TE');
-    %ylim([-1, 7]);
     plotnum = plotnum + 1;
 end
 %% Si section
 
-sink = si_spline(wv);
+sink = si_spline(wv);   % Silicon n, k spline.
 
 figure(4);
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 1]);
@@ -104,9 +102,9 @@ for d=diams
     rawtitle = strcat(sprintf('NW diameter: %0.3f', d), ' $\mu$m');
     title(rawtitle, 'Interpreter', 'latex');
     legend('TM', 'TE');
-    %ylim([-1, 7]);
     plotnum = plotnum + 1;
 end
+
 fprintf('Figure 1: TE/TM scattering cross sections for GaAs nanowires with varying diameters.\n');
 fprintf('Figure 2: TE/TM absorption cross sections for GaAs nanowires with varying diameters.\n');
 fprintf('Figure 3: TE/TM scattering cross sections for constant refractive index nanowires of diameter = 200 nm.\n');
